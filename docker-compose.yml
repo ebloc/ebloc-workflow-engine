@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  slurm:
+    build: .
+    hostname: slurmctl
+    stdin_open: true
+    tty: true
+    ports:
+      - "4001:4001" # Public IPFS Port
+    volumes:
+      - /tmp/volumes/lib:/var/lib/slurmd
+      - /tmp/volumes/spool:/var/spool/slurm
+      - /tmp/volumes/log:/var/log/slurm
+      - /tmp/volumes/db:/var/lib/mysql
